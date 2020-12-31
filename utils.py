@@ -36,7 +36,7 @@ def poll(message):
     count = 0
     for word  in message :
         count = count + 1
-        if word == 'choices':
+        if word == '-':
             return count
 
     return 1
