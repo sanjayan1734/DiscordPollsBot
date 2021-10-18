@@ -2,7 +2,7 @@ import discord
 from discord import channel
 
 import utils as Utils
-from keys.token import token
+from keys import token
 
 PREFIX = '!'
 
