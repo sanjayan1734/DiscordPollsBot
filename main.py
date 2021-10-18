@@ -58,14 +58,12 @@ class MyClient(discord.Client):
                 PREFIX = newprefix
                 await message.channel.send('prefix changed to {}'.format(newprefix))
 
+            # command to display the help Embed
             elif message.content.lower().startswith('{}help'.format(PREFIX)):
                 embed_message = discord.Embed(title = 'help',discription ='bot commands')
                 embed_message.set_author(name=client.user)
                 embed_message.add_field(name = 'commands',value='{}poll \n{}prefix \n{}8-ball'.format(PREFIX,PREFIX,PREFIX))
                 await message.channel.send(embed = embed_message)
 
-    # sends message when a new member joins
-    # async def on_member_join(self, member):
-    #     print('welcome member')
 client = MyClient()
 client.run(token)
