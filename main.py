@@ -34,13 +34,16 @@ class MyClient(discord.Client):
             elif message.content.lower().startswith('{}poll'.format(PREFIX)):
                 newmessage = message.content.split(' ')
                 count = Utils.poll(newmessage)
-                await message.channel.send('@here poll has been initiated \nreact to the above message to reply to the poll')
+                print(count)
+                if count == 1:
+                    await message.channel.send('please enter a statement for your poll')
 
                 # poll for a range of choices keyword = 'choices'
-                if count != 1:
+                elif count != 1 and count<=len(newmessage)-1:
                     reaction_count = 0
+                    await message.channel.send('@here poll has been initiated \nreact to the above message to reply to the poll')
                     await message.channel.send('choices are ')
-                    while (count <= len(newmessage)):
+                    while (count < len(newmessage)):
                         await message.channel.send('{} for {}'.format(Utils.poll_reactions[reaction_count], newmessage[count]))
                         await message.add_reaction(emoji=Utils.poll_reactions[reaction_count])
                         count = count + 1
@@ -48,6 +51,7 @@ class MyClient(discord.Client):
 
                 # poll for a simple yes or no
                 else:
+                    await message.channel.send('@here poll has been initiated \nreact to the above message to reply to the poll')
                     await message.add_reaction(emoji='👍')
                     await message.add_reaction(emoji='👎')
                     await message.add_reaction(emoji='🤔')

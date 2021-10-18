@@ -27,7 +27,7 @@ eightball = [
 #this function chooses a random answer for the 'eightball' list
 def eightball_answer():
     answer = random.choice(eightball)
-    print(answer)
+    
     return answer
 
 #checks if the message from the user contains the phrase 'choices' and returns its position
@@ -39,7 +39,7 @@ def poll(message):
         if word == '-':
             return count
 
-    return 1
+    return count
 
 #id's of different colour reactions 'colour square'
 #got the id's from emojipedia
