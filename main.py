@@ -1,8 +1,12 @@
 import discord
 from discord import channel
+import json
 
 import utils as Utils
-from keys import token
+
+key = open('key.json')
+keyValue = json.load(key)
+token = keyValue['token']
 
 PREFIX = '!'
 
