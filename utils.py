@@ -30,6 +30,7 @@ def eightball_answer():
     
     return answer
 
+#returns 1 if the command contain more than one word(the command itself) else returns 0
 def check_commandlength(message):
     count = 0
     for word in message:

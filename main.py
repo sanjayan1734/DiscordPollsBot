@@ -64,8 +64,13 @@ class MyClient(discord.Client):
             # command to change the prefix for the bot commands
             elif message.content.lower().startswith('{}prefix'.format(PREFIX)):
                 newprefix = message.content[8:]
-                PREFIX = newprefix
-                await message.channel.send('prefix changed to {}'.format(newprefix))
+                if(len(newprefix)<2):
+                    print(len(newprefix))
+                    print(newprefix)
+                    PREFIX = newprefix
+                    await message.channel.send('prefix changed to {}'.format(newprefix))
+                else:
+                    await message.channel.send('Prefix must be a single character!!')
 
             # command to display the help Embed
             elif message.content.lower().startswith('{}help'.format(PREFIX)):
