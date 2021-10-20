@@ -27,13 +27,18 @@ class MyClient(discord.Client):
 
             # magic 8-ball answers
             elif message.content.lower().startswith('{}8-ball'.format(PREFIX)):
-                answer = Utils.eightball_answer()
-                await message.channel.send(answer)
+                messageList = message.content.split(' ')
+                
+                if(Utils.check_commandlength(messageList)):
+                    answer = Utils.eightball_answer()
+                    await message.channel.send(answer)
+                else:
+                    await message.channel.send('Incomplete Command!!!')
 
             # polls command - either a simple yes/no or a range of choices
             elif message.content.lower().startswith('{}poll'.format(PREFIX)):
                 newmessage = message.content.split(' ')
-                count = Utils.poll(newmessage)
+                count = Utils.poll_option(newmessage)
                 print(count)
                 if count == 1:
                     await message.channel.send('please enter a statement for your poll')

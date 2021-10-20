@@ -30,9 +30,18 @@ def eightball_answer():
     
     return answer
 
+def check_commandlength(message):
+    count = 0
+    for word in message:
+        count+=1
+    if count>1:
+        return 1
+    else:
+        return 0
+
 #checks if the message from the user contains the phrase 'choices' and returns its position
 #parameters - list(list of the words of the message/command split using ' ')
-def poll(message):
+def poll_option(message):
     count = 0
     for word  in message :
         count = count + 1
